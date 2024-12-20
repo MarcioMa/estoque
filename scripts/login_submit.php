@@ -48,7 +48,7 @@ if (!password_verify($senha, $result['data'][0]->senha)) {
 }
 
 //define a sessão estive tudo ok
-$_SESSION['usuario'] = $result['data'][0]->usuario;
+$_SESSION['usuario'] = $result['data'][0];
 
 //Redirecionar para pagina home
 header('Location: index.php?rota=home');
