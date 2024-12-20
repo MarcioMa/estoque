@@ -1,7 +1,7 @@
 <nav class="container mt-5 pt-4 border rounded-3 shadow-sm bg-light">
     <div class="row align-items-center">
         <div class="col">
-        <h4>Estoque Web</h4>
+        <h4 class="text-uppercase">Estoque-Web</h4>
         </div>
         <div class="col text-center">
             <a href="?rota=home">Home</a>
