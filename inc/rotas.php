@@ -7,7 +7,7 @@ return[
     'login_submit',
     'logout',
 
-    'page1',
-    'page2',
-    'page3'
+    'cad_usuario',
+    'cad_produto',
+    'relatorio'
 ];

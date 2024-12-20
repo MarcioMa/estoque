@@ -32,8 +32,20 @@ switch ($rota) {
     case 'login_submit':
         $script = 'login_submit.php';
         break;
+        case 'logout':
+            $script = 'logout.php';
+            break;
     case 'home':
         $script = 'home.php';
+        break;
+    case 'cad_usuario':
+        $script = 'cad_usuario.php';
+        break;
+    case 'cad_produto':
+        $script = 'cad_produto.php';
+        break;
+    case 'relatorio':
+        $script = 'relatorio.php';
         break;
 }
 
