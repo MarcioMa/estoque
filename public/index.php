@@ -32,7 +32,7 @@ switch ($rota) {
     case 'login_submit':
         $script = 'login_submit.php';
         break;
-        case 'logout':
+    case 'logout':
             $script = 'logout.php';
             break;
     case 'home':

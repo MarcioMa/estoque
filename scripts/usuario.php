@@ -31,11 +31,11 @@ require_once __DIR__."/../inc/navbar.php";
 </style>
 
 <div class="form-container">
-        <form method="POST" autocomplete="off">
-            <!-- Campo para o Nome -->
+        <form method="POST" action="?rota=cad_usuario" autocomplete="off">
+            <!-- Campo para o usuario -->
             <div class="mb-3">
-                <label for="nome" class="form-label">Nome / Login</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
+                <label for="usuario" class="form-label">Nome / Login</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" required>
             </div>
 
             <!-- Campo para o E-mail -->
@@ -70,15 +70,15 @@ require_once __DIR__."/../inc/navbar.php";
             <div class="mb-3">
                 <label class="form-label">Tipo de Usuário</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="admin" name="tipo_usuario" value="0" required>
+                    <input class="form-check-input" type="radio" id="admin" name="nivel" value="0" required>
                     <label class="form-check-label" for="admin">Administrador</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="usuario" name="tipo_usuario" value="1" required>
+                    <input class="form-check-input" type="radio" id="usuario" name="nivel" value="1" required>
                     <label class="form-check-label" for="usuario">Usuário</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="suporte" name="tipo_usuario" value="2" required>
+                    <input class="form-check-input" type="radio" id="suporte" name="nivel" value="2" required>
                     <label class="form-check-label" for="suporte">Suporte</label>
                 </div>
             </div>
