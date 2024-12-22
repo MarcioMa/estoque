@@ -6,9 +6,9 @@
         <div class="col text-center">
             <a href="?rota=home">Home</a>
             <span class="mx-2">|</span>
-            <a href="?rota=cad_usuario">Usuário</a>
+            <a href="?rota=usuario">Usuário</a>
             <span class="mx-2">|</span>
-            <a href="?rota=cad_produto">Produto</a>
+            <a href="?rota=produto">Produto</a>
             <span class="mx-2">|</span>
             <a href="?rota=relatorio">Relatório</a>
         </div>

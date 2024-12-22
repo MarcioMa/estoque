@@ -38,8 +38,14 @@ switch ($rota) {
     case 'home':
         $script = 'home.php';
         break;
+    case 'usuario':
+        $script = 'usuario.php';
+        break;
     case 'cad_usuario':
         $script = 'cad_usuario.php';
+        break;
+    case 'produto':
+        $script = 'produto.php';
         break;
     case 'cad_produto':
         $script = 'cad_produto.php';
