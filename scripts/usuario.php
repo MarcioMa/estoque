@@ -4,18 +4,10 @@ require_once __DIR__."/../inc/navbar.php";
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col">
-            <h4>Cadastro Usuário</h4>
-        </div>
-    </div>
-</div>
-
 <!-- Estilos personalizados -->
 <style>
     .form-container {
-        max-width: 600px;
+        max-width: 800px;
         margin: 50px auto;
     }
     .input-group {
@@ -29,8 +21,14 @@ require_once __DIR__."/../inc/navbar.php";
         cursor: pointer;
     }
 </style>
-
-<div class="form-container">
+<div class="container mt-4 text-center">
+    <div class="row">
+        <div class="col">
+            <h4>Cadastro Usuário</h4>
+        </div>
+    </div>
+</div>
+<div class="form-container shadow-lg p-3 mb-5 bg-white rounded mt-2" >
         <form method="POST" action="?rota=cad_usuario" autocomplete="off">
             <!-- Campo para o usuario -->
             <div class="mb-3">
