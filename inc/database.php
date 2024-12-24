@@ -30,6 +30,7 @@ class database
         }
     }
 
+
     // Método para executar consultas INSERT, UPDATE, DELETE
     public function execute($sql, $params = [])
     {

@@ -1,21 +1,26 @@
-<nav class="container mt-5 pt-4 border rounded-3 shadow-sm bg-light">
-    <div class="row align-items-center">
+<nav class="container mt-2 pt-4 border rounded-3 shadow-sm bg-light">
+    <div class="row mb-3 align-items-center">
         <div class="col">
-        <h4 class="text-uppercase">Estoque-Web</h4>
-        </div>
-        <div class="col text-center">
-            <a href="?rota=home">Home</a>
-            <span class="mx-2">|</span>
-            <a href="?rota=usuario">Usuário</a>
-            <span class="mx-2">|</span>
-            <a href="?rota=produto">Produto</a>
-            <span class="mx-2">|</span>
-            <a href="?rota=relatorio">Relatório</a>
+            <div class="d-inline">
+                <a href="?rota=home"><button type="submit" class="btn btn-info">Home</button></a>
+            </div>
+            <div class="d-inline">
+                <a href="?rota=usuario"><button type="submit" class="btn btn-info">Usúario</button></a>
+            </div>
+            <div class="d-inline">
+                <a href="?rota=produto"><button type="submit" class="btn btn-info">Produto</button></a>
+            </div>
+            <div class="d-inline">
+                <a href="?rota=relatorio"><button type="submit" class="btn btn-info">Relatório</button></a>
+            </div>
         </div>
         <div class="col text-end">
-            <span><strong><?= $_SESSION['usuario']->usuario ?></strong></span>
-            <span class="mx-2">|</span>
-            <a href="?rota=logout">Sair</a>
+            <div class="d-inline text-end text-dark"><strong>Login: [<?= $_SESSION['usuario']->usuario ?>]</strong></div>
+            <div class="d-inline">
+                <a href="?rota=logout"><button type="submit" class="btn btn-danger">Sair</button></a>
+            </div>
         </div>
     </div>
 </nav>
+
+

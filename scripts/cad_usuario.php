@@ -24,7 +24,7 @@ $db = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
 $response = $db->execute("INSERT INTO usuarios (usuario, email, senha, nivel) VALUES (?, ?, ?, ?)", [$usuario, $email, $senha, $nivel]);
 
 if ($response['status'] === 'Success') {
-    echo $response['affected_rows'] . " linha(s) afetada(s) cadastrado com sucesso!";
+    echo "<h1>".$response['affected_rows'] . " linha(s) afetada(s) cadastrado com sucesso!</h1>";
     header('Refresh:2; index.php?rota=usuario');
 } else {
     echo "Erro: " . $response['data'];

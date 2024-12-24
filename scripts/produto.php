@@ -59,7 +59,7 @@ require_once __DIR__."/../inc/navbar.php";
 <div class="container mt-4 text-center">
     <div class="row">
         <div class="col">
-            <h4>Cadastro Usuário</h4>
+            <h4>Cadastro Produto</h4>
         </div>
     </div>
 </div>
@@ -67,7 +67,7 @@ require_once __DIR__."/../inc/navbar.php";
     <form method="POST" action="?rota=cad_produto" autocomplete="off">        
         <!-- Campo de Status (Ativo/Inativo) -->
         <div class="form-group d-flex justify-content-end mb-2">
-            <input type="checkbox" class="form-check-input" id="status" name="status" checked>
+            <input type="checkbox" class="form-check-input" id="status" name="status" value="Ativo" checked>
             <label id="status-label" class="form-check-label" for="status">Ativo</label>
         </div>
                 <!-- Script para alternar o texto da label -->
@@ -77,8 +77,10 @@ require_once __DIR__."/../inc/navbar.php";
             var statusLabel = document.getElementById('status-label');
             if (this.checked) {
                 statusLabel.textContent = 'Ativo';
+                document.getElementById('status').value = 'Ativo';
             } else {
                 statusLabel.textContent = 'Inativo';
+                document.getElementById('status').value = 'Inativo';
             }
         });
     </script>
@@ -116,16 +118,16 @@ require_once __DIR__."/../inc/navbar.php";
         </select>
     </div>
 
-<!-- Campo de Status -->
+<!-- Campo de Situação -->
     <div class="form-group">
-        <label for="status">Status</label>
-        <select class="form-select" id="status" name="status" required>
+        <label for="status">Situação dispositivo</label>
+        <select class="form-select" id="situacao" name="situacao" required>
             <option value="">Selecione status do dispositivo</option>
             <option value="novo">Novo</option>
-            <option value="defeito">Defeito</option>
             <option value="funciona">Funcionando</option>
             <option value="manutencao">Manutenção</option>
             <option value="recolhido">Recolhido</option>
+            <option value="descarte">Descarte/Baixa</option>
         <!-- Adicione mais opções conforme necessário -->
         </select>
     </div>
@@ -148,22 +150,21 @@ require_once __DIR__."/../inc/navbar.php";
                 <input type="date" class="form-control" id="data_entrada" name="data_entrada" required>
             </div>
 
-            <!-- Campo de Data de Saída -->
-            <div class="form-group">
-                <label for="data_saida">Data de Saída</label>
-                <input type="date" class="form-control" id="data_saida" name="data_saida">
-            </div>
+            <script>
+                // Definir o atributo max para o campo data_entrada como a data atual
+                document.getElementById('data_entrada').setAttribute('max', new Date().toISOString().split('T')[0]);
+            </script>
             
             <!-- Campo de Data de Garantia -->
             <div class="form-group">
                 <label for="garantia">Data final de Garantia</label>
-                <input type="date" class="form-control" id="garantia" name="garantia">
+                <input type="date" class="form-control" id="data_garantia" name="data_garantia">
             </div>
 
             <!-- Campo de Especificações técnicas -->
             <div class="form-group">
                 <label for="espec_tecnicas">Especificações técnicas</label>
-                <textarea class="form-control" id="observacao" name="observacao" rows="3" placeholder="Digite especificações do produto"></textarea>
+                <textarea class="form-control" id="espec_tecnicas" name="espec_tecnicas" rows="3" placeholder="Digite especificações do produto"></textarea>
             </div>
             <!-- Botões -->
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
