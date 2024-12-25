@@ -1,38 +1,35 @@
 <?php
-require_once __DIR__."/../inc/navbar.php";
-include_once __DIR__. '/../inc/config.php'; 
-include_once __DIR__.'/../inc/database.php';
+    require_once __DIR__."/../inc/navbar.php";
+    include_once __DIR__. '/../inc/config.php'; 
+    include_once __DIR__.'/../inc/database.php';
 ?>
 
-<div class="container mt-5 text-center">
+<div class="container mt-4 text-center">
     <div class="row">
         <div class="col">
-            <h4>Relatório</h4>
+            <h4>Relatório de Produtos</h4>
         </div>
     </div>
 </div>
 
 <?php
-// Instanciar a classe Database
-$db = new database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
 
-// Consultar todos os produtos
-$sql = "SELECT * FROM produto"; 
-$response = $db->query($sql);
+    $db = new database();
 
-// Verifique o status da resposta
-if ($response['status'] !== 'Success') {
-    die("Erro: " . $response['data']);
-}
+    // Exemplo de consulta com parâmetros
+    $sql = "SELECT * FROM produto";
 
-// Acessar os dados retornados
-$produtos = $response['data'];
+    //Parametros da consulta
+    $params = [];
 
-// Se não houver produtos, mostrar uma mensagem
-if (empty($produtos)) {
-    echo "<p>Nenhum produto encontrado.</p>";
-    exit;
-}
+    // Chama o método para executar a consulta
+    $resultados = $db->executarConsulta($sql, $params);
+
+    // Se não houver produtos, mostrar uma mensagem
+    if (empty($resultados)) {
+        echo "<p>Nenhum produto encontrado.</p>";
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -40,16 +37,14 @@ if (empty($produtos)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> <!-- Arquivo CSS para estilo -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-
-    <h3>Relatório de Produtos</h3>
-
     <!-- Tabela com os dados dos produtos -->
-    <table border="1">
-        <thead>
-            <tr>
+    <table class="table table-light table-striped table-bordered">
+        <thead class="table-dark">
+            <tr class="text-center">
                 <th>Categoria</th>
                 <th>Marca</th>
                 <th>Status</th>
@@ -61,8 +56,8 @@ if (empty($produtos)) {
                 <th>Especificações Técnicas</th>
             </tr>
         </thead>
-        <tbody>
-            <?php foreach ($produtos as $produto): ?>
+        <tbody class="table-group-divider">
+            <?php foreach ($resultados as $produto): ?>
                 <tr>
                     <td><?php echo htmlspecialchars($produto['categoria']); ?></td>
                     <td><?php echo htmlspecialchars($produto['marca']); ?></td>
@@ -78,10 +73,12 @@ if (empty($produtos)) {
         </tbody>
     </table>
 
-    <!-- Botão para exportar para PDF ou Excel, por exemplo -->
-    <div>
-        <a href="exportar_relatorio.php" class="btn-export">Exportar Relatório</a>
+    <!-- Botão para exportar para PDF ou Excel -->
+    <div class="btn-container text-end mx-2">
+        <a href="?rota=exportar_rel" class="btn btn-warning" title="Exportar Relatório">
+            <i class="fas fa-print mr-2"></i>
+            Exportar Relatório
+        </a>
     </div>
-
 </body>
 </html>

@@ -11,5 +11,6 @@ return[
     'cad_usuario',
     'produto',
     'cad_produto',
-    'relatorio'
+    'relatorio',
+    'exportar_rel'
 ];

@@ -53,6 +53,9 @@ switch ($rota) {
     case 'relatorio':
         $script = 'relatorio.php';
         break;
+    case 'exportar_rel':
+        $script = 'exportar_rel.php';
+        break;
 }
 
 //carregamento de scripts permanentes

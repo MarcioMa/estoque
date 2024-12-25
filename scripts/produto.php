@@ -114,7 +114,7 @@ require_once __DIR__."/../inc/navbar.php";
             <option value="Lenovo">Lenovo</option>
             <option value="Compaq">Compaq</option>
             <option value="Multilaser">Multilaser</option>
-            <option value="Outras">Outras</option>   
+            <option value="Outro">Outro</option>   
         </select>
     </div>
 
@@ -123,11 +123,11 @@ require_once __DIR__."/../inc/navbar.php";
         <label for="status">Situação dispositivo</label>
         <select class="form-select" id="situacao" name="situacao" required>
             <option value="">Selecione status do dispositivo</option>
-            <option value="novo">Novo</option>
-            <option value="funciona">Funcionando</option>
-            <option value="manutencao">Manutenção</option>
-            <option value="recolhido">Recolhido</option>
-            <option value="descarte">Descarte/Baixa</option>
+            <option value="Novo">Novo</option>
+            <option value="Funciona">Funcionando</option>
+            <option value="Manutenção">Manutenção</option>
+            <option value="Recolhido">Recolhido</option>
+            <option value="Descarte">Descarte/Baixa</option>
         <!-- Adicione mais opções conforme necessário -->
         </select>
     </div>
