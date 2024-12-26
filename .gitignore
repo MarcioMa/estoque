@@ -1,0 +1,7 @@
+# Ignorar completamente o diretório tcpdf e seu conteúdo
+/tcpdf/
+
+# Ignorar arquivos temporários, logs, ou cache dentro do tcpdf
+/tcpdf/*.log
+/tcpdf/*.tmp
+/tcpdf/cache/

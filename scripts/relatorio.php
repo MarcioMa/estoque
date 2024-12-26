@@ -1,6 +1,6 @@
 <?php
-    require_once __DIR__."/../inc/navbar.php";
-    include_once __DIR__. '/../inc/config.php'; 
+    require_once __DIR__.'/../inc/navbar.php';
+    include_once __DIR__.'/../inc/config.php'; 
     include_once __DIR__.'/../inc/database.php';
 ?>
 
@@ -38,11 +38,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+    
+    <label for="filtro">Filtra por:</label>
+
+    <select name="filtro" id="filtro">
+        <optgroup label="Categoria">
+            <option value="">Volvo</option>
+            <option value="saab">Saab</option>
+        </optgroup>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+    </select>
+
     <!-- Tabela com os dados dos produtos -->
-    <table class="table table-light table-striped table-bordered">
+    <table class="table table-light table-striped table-bordered mt-2">
         <thead class="table-dark">
             <tr class="text-center">
                 <th>Categoria</th>
@@ -73,11 +84,11 @@
         </tbody>
     </table>
 
-    <!-- Botão para exportar para PDF ou Excel -->
+    <!-- Botão para Imprimir -->
     <div class="btn-container text-end mx-2">
         <a href="?rota=exportar_rel" class="btn btn-warning" title="Exportar Relatório">
             <i class="fas fa-print mr-2"></i>
-            Exportar Relatório
+            Imprimir Relatório
         </a>
     </div>
 </body>

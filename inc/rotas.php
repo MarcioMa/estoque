@@ -12,5 +12,6 @@ return[
     'produto',
     'cad_produto',
     'relatorio',
-    'exportar_rel'
+    'exportar_rel',
+    'tcpdf'
 ];

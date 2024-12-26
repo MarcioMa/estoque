@@ -54,6 +54,7 @@ switch ($rota) {
         $script = 'relatorio.php';
         break;
     case 'exportar_rel':
+        require_once __DIR__ . '/../tcpdf/tcpdf.php';
         $script = 'exportar_rel.php';
         break;
 }
