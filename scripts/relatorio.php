@@ -4,34 +4,6 @@
     include_once __DIR__.'/../inc/database.php';
 ?>
 
-<div class="container mt-4 text-center">
-    <div class="row">
-        <div class="col">
-            <h4>Relatório de Produtos</h4>
-        </div>
-    </div>
-</div>
-
-<?php
-
-    $db = new database();
-
-    // Exemplo de consulta com parâmetros
-    $sql = "SELECT * FROM produto";
-
-    //Parametros da consulta
-    $params = [];
-
-    // Chama o método para executar a consulta
-    $resultados = $db->executarConsulta($sql, $params);
-
-    // Se não houver produtos, mostrar uma mensagem
-    if (empty($resultados)) {
-        echo "<p>Nenhum produto encontrado.</p>";
-        exit;
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -40,17 +12,91 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    
-    <label for="filtro">Filtra por:</label>
+    <div class="container mt-4 text-center text-uppercase">
+        <div class="row">
+            <div class="col">
+                <h4>Relatório de Produtos</h4>
+            </div>
+        </div>
+    </div>
 
-    <select name="filtro" id="filtro">
-        <optgroup label="Categoria">
-            <option value="">Volvo</option>
-            <option value="saab">Saab</option>
-        </optgroup>
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
-    </select>
+    <div id="divFiltro" class="content text-end mx-2">
+        <form method="POST" action="">
+            <label for="filtro" style="font-weight:bold;">Filtra por:</label>
+            <select name="filtro" id="filtro" style="width:200px; height: 40px; text-align:center;">
+                    <option value="*">Todos registros</option>
+                <optgroup label="Categoria">
+                    <option value="Computador">Computador</option>
+                    <option value="Notebook">Notebook</option>
+                    <option value="Periférico">Periférico</option>
+                    <option value="Acessório">Acessório</option>
+                </optgroup>
+                <optgroup label="Marca">
+                    <option value="Apple">Apple</option>
+                    <option value="Acer">Acer</option>
+                    <option value="Asus">Asus</option>
+                    <option value="Dell">Dell</option>
+                    <option value="HP">HP</option>
+                    <option value="Lenovo">Lenovo</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Positivo">Positivo</option>
+                    <option value="Lenovo">Lenovo</option>
+                    <option value="Compaq">Compaq</option>
+                    <option value="Multilaser">Multilaser</option>
+                    <option value="Outro">Outro</option> 
+                </optgroup>
+                <optgroup label="Marca">
+                    <option value="Novo">Novo</option>
+                    <option value="Funciona">Funcionando</option>
+                    <option value="Manutenção">Manutenção</option>
+                    <option value="Recolhido">Recolhido</option>
+                    <option value="Descarte">Descarte/Baixa</option>
+                </optgroup>
+            </select>
+            <button type="submit" class="btn btn-primary">OK</button>
+        </form>
+    </div>
+
+    <?php
+        // Valor padrão
+        $filtro = '*';
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Capturar e validar o filtro
+            $filtro = isset($_POST['filtro']) ? $_POST['filtro'] : '*';
+        
+            // Validar e sanitizar $filtro conforme necessário
+        }
+
+        $db = new database();
+
+        // Exemplo de consulta com parâmetros
+        $sql = "SELECT * FROM produto WHERE 1=1";
+
+        //Parametros da consulta
+        $params = [];
+
+        // Condicionais para aplicar o filtro
+        if ($filtro !== '*') {
+            // Verificando se é uma categoria, marca ou status
+            if (in_array($filtro, ['Computador', 'Notebook', 'Periférico', 'Acessório'])) {
+                $sql .= " AND categoria = :filtro";
+            } elseif (in_array($filtro, ['Apple', 'Acer', 'Asus', 'Dell', 'HP', 'Lenovo', 'Samsung', 'Positivo', 'Compaq', 'Multilaser', 'Outro'])) {
+                $sql .= " AND marca = :filtro";
+            } else {
+                $sql .= " AND status = :filtro";
+            }
+
+            // Adiciona o filtro aos parâmetros
+            $params[':filtro'] = $filtro;
+        }
+
+        // Chama o método para executar a consulta
+        $resultados = $db->executarConsulta($sql, $params);
+    ?>
+
+    <!-- Exibir tabela de resultados -->
+    <?php if (!empty($resultados)) : ?>
 
     <!-- Tabela com os dados dos produtos -->
     <table class="table table-light table-striped table-bordered mt-2">
@@ -83,6 +129,9 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?php else : ?>
+            <p>Nenhum produto encontrado.</p>
+        <?php endif; ?>
 
     <!-- Botão para Imprimir -->
     <div class="btn-container text-end mx-2">

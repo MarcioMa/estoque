@@ -36,7 +36,7 @@ $response = $db->execute("INSERT INTO produto (status, categoria, marca, situaca
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [$status, $categoria, $marca, $situacao, $modelo, $patrimonio, $data_entrada, $data_garantia, $espec_tecnicas]);
 
 if ($response['status'] === 'Success') {
-    echo "<h1>".$response['affected_rows'] . " Registro cadastrado com sucesso!</h1>";
+    echo "<h1 style='text-align:center; color:green;'>[".$response['affected_rows']."] Registro cadastrado com sucesso!</h1>";
     header('Refresh:2; index.php?rota=produto');
 } else {
     echo "Erro: " . $response['data'];

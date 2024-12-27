@@ -30,7 +30,6 @@ require_once __DIR__."/../inc/navbar.php";
     }
 
     .form-check-input {
-        /* Escondendo o checkbox padrão */
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -46,8 +45,8 @@ require_once __DIR__."/../inc/navbar.php";
 
     /* Estilo quando o checkbox está marcado */
     .form-check-input:checked {
-        background-color: #007bff;  /* Cor de fundo quando marcado */
-        border-color: #0056b3;  /* Cor da borda quando marcado */
+        background-color: #007bff;  
+        border-color: #0056b3;  
     }
 
     /* Alterando o tamanho quando o checkbox está sendo focado */
@@ -56,7 +55,7 @@ require_once __DIR__."/../inc/navbar.php";
         box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.5);
     }
 </style>
-<div class="container mt-4 text-center">
+<div class="container mt-4 text-center text-uppercase">
     <div class="row">
         <div class="col">
             <h4>Cadastro Produto</h4>
@@ -134,8 +133,8 @@ require_once __DIR__."/../inc/navbar.php";
 
             <!-- Campo de Modelo -->
             <div class="form-group">
-                <label for="modelo">Modelo / Numero Série</label>
-                <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Digite o modelo" required>
+                <label for="modelo">Nome / Modelo / Numero Série</label>
+                <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Digite o nome ou modelo ou numero série" required>
             </div>
 
             <!-- Campo de Patrimônio -->
@@ -160,7 +159,6 @@ require_once __DIR__."/../inc/navbar.php";
                 <label for="garantia">Data final de Garantia</label>
                 <input type="date" class="form-control" id="data_garantia" name="data_garantia">
             </div>
-
             <!-- Campo de Especificações técnicas -->
             <div class="form-group">
                 <label for="espec_tecnicas">Especificações técnicas</label>
@@ -173,3 +171,8 @@ require_once __DIR__."/../inc/navbar.php";
             </div>
         </form>
     </div>
+<?php
+    require_once __DIR__."/../inc/lista.php";
+?>
+
+
