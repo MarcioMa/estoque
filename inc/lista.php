@@ -3,7 +3,16 @@
     include_once __DIR__.'/../inc/database.php';
 ?>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .btn-edit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: #C0C0C0;
+        }
+    </style>
     <div class="container mt-2 text-center text-uppercase">
         <div class="row">
             <div class="col">
@@ -58,9 +67,17 @@
                     <td><?php echo htmlspecialchars($produto['data_garantia']); ?></td>
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
                     <td>
-                        <span class="material-icons">delete</span>
+                    <a href="?rota=edit" class="btn btn-warning" title="editar">
+                        <i class="fas fa-edit mr-2"></i>
+                        editar
+                    </a>
                     </td>
-                    <td><a href="#" text-danger text-center>Excluir</a></td>
+                    <td>
+                    <a href="?rota=deleta" class="btn btn-danger" title="deleta">
+                        <i class="fas fa-delete mr-2"></i>
+                        Deleta
+                    </a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
