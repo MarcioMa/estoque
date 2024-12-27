@@ -1,9 +1,6 @@
 <?php
 require_once __DIR__."/../inc/navbar.php";
 ?>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
 <!-- Estilos personalizados -->
 <style>
     .form-container {
@@ -83,8 +80,8 @@ require_once __DIR__."/../inc/navbar.php";
 
             <!-- Botões -->
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="reset" class="btn btn-warning btn-lg me-md-2"> Limpar </button>
-                <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                <button type="reset" class="btn btn-warning btn-lg me-md-2"><i class="fa fa-eraser"></i> Limpar </button>
+                <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-plus-square"></i> Cadastrar</button>
             </div>
         </form>
     </div>

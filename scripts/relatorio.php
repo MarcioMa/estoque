@@ -4,14 +4,6 @@
     include_once __DIR__.'/../inc/database.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</head>
-<body>
     <div class="container mt-4 text-center text-uppercase">
         <div class="row">
             <div class="col">
@@ -23,7 +15,7 @@
     <div id="divFiltro" class="content text-end mx-2">
         <form method="POST" action="">
             <label for="filtro" style="font-weight:bold;">Filtra por:</label>
-            <select name="filtro" id="filtro" style="width:200px; height: 40px; text-align:center;">
+            <select name="filtro" id="filtro" style="width:250px; height: 37px; text-align:center; background:#ffffdc;">
                     <option value="*">Todos registros</option>
                 <optgroup label="Categoria">
                     <option value="Computador">Computador</option>
@@ -53,7 +45,7 @@
                     <option value="Descarte">Descarte/Baixa</option>
                 </optgroup>
             </select>
-            <button type="submit" class="btn btn-primary">OK</button>
+            <button type="submit" class="btn btn-secondary mb-1"> <i class="fa fa-filter"></i> OK</button>
         </form>
     </div>
 
@@ -140,5 +132,3 @@
             Imprimir Relatório
         </a>
     </div>
-</body>
-</html>
