@@ -119,12 +119,10 @@ require_once __DIR__."/../inc/navbar.php";
     <div class="form-group">
         <label for="status">Situação dispositivo</label>
         <select class="form-select" id="situacao" name="situacao" required>
-            <option value="">Selecione status do dispositivo</option>
-            <option value="Novo">Novo</option>
-            <option value="Funciona">Funcionando</option>
-            <option value="Manutenção">Manutenção</option>
-            <option value="Recolhido">Recolhido</option>
-            <option value="Descarte">Descarte/Baixa</option>
+            <option value="novo">Novo</option>
+            <option value="usado">Usado</option>
+            <option value="reparo">Em Reparos</option>
+            <option value="outro">Outro</option>
         <!-- Adicione mais opções conforme necessário -->
         </select>
     </div>
