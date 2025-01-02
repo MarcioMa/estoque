@@ -20,6 +20,7 @@ $db = new database();
 $params = [
     ':usuario' => $usuario
 ];
+
 $sql = "SELECT * FROM usuarios WHERE usuario = :usuario";
 $result = $db->query($sql, $params);
 

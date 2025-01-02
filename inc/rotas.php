@@ -7,6 +7,8 @@ return[
     'login_submit',
     'logout',
 
+    'editar',
+    'delete',
     'usuario',
     'cad_usuario',
     'produto',

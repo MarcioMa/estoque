@@ -10,7 +10,7 @@
                 <a href="?rota=usuario"><button type="submit" class="btn btn-info"><i class="fa fa-users"></i> Usúario</button></a>
             </div>
             <div class="d-inline">
-                <a href="?rota=produto"><button type="submit" class="btn btn-info"><i class="fa fa-laptop"></i> Produto</button></a>
+                <a href="?rota=produto"><button type="submit" class="btn btn-info"><i class="fa fa-laptop"></i> Equipamento</button></a>
             </div>
             <div class="d-inline">
                 <a href="?rota=relatorio"><button type="submit" class="btn btn-info"><i class="fa fa-file-text"></i> Relatório</button></a>

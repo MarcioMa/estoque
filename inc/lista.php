@@ -16,7 +16,7 @@
     <div class="container mt-2 text-center text-uppercase">
         <div class="row">
             <div class="col">
-                <h4>Produtos Cadastrados</h4>
+                <h4>Equipamentos Cadastrados</h4>
             </div>
         </div>
     </div>
@@ -63,18 +63,18 @@
                     <td><?php echo htmlspecialchars($produto['situacao']); ?></td>
                     <td><?php echo htmlspecialchars($produto['modelo']); ?></td>
                     <td><?php echo htmlspecialchars($produto['patrimonio']); ?></td>
-                    <td><?php echo htmlspecialchars($produto['data_entrada']); ?></td>
-                    <td><?php echo htmlspecialchars($produto['data_garantia']); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_entrada']))); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_garantia']))); ?></td>
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
                     <td>
-                    <a href="?rota=edit" class="btn btn-warning" title="editar">
+                    <a href="?rota=edit&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-warning" title="editar">
                         <i class="fas fa-edit mr-2"></i>
                         editar
                     </a>
                     </td>
                     <td>
-                    <a href="?rota=deleta" class="btn btn-danger" title="deleta">
-                        <i class="fas fa-delete mr-2"></i>
+                    <a onclick="return confirm('Confirma deleta este registro?')" href="?rota=delete&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-danger" title="deleta">
+                        <i class="fa-solid fa-trash mr-2"></i>
                         Deleta
                     </a>
                     </td>
@@ -85,5 +85,4 @@
     <?php else : ?>
             <p>Nenhum produto encontrado.</p>
         <?php endif; ?>
-</body>
-</html>
+<script>

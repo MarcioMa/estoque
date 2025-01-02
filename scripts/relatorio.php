@@ -7,7 +7,7 @@
     <div class="container mt-4 text-center text-uppercase">
         <div class="row">
             <div class="col">
-                <h4>Relatório de Produtos</h4>
+                <h4>Relatório de Equipamentos</h4>
             </div>
         </div>
     </div>
@@ -114,15 +114,15 @@
                     <td><?php echo htmlspecialchars($produto['situacao']); ?></td>
                     <td><?php echo htmlspecialchars($produto['modelo']); ?></td>
                     <td><?php echo htmlspecialchars($produto['patrimonio']); ?></td>
-                    <td><?php echo htmlspecialchars($produto['data_entrada']); ?></td>
-                    <td><?php echo htmlspecialchars($produto['data_garantia']); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_entrada']))); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_garantia']))); ?></td>
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
     <?php else : ?>
-            <p>Nenhum produto encontrado.</p>
+            <p>Nenhum Equipamento encontrado.</p>
         <?php endif; ?>
 
     <!-- Botão para Imprimir -->

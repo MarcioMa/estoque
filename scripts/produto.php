@@ -56,7 +56,7 @@ require_once __DIR__."/../inc/navbar.php";
 <div class="container mt-4 text-center text-uppercase">
     <div class="row">
         <div class="col">
-            <h4>Cadastro Produto</h4>
+            <h4>Cadastro Equipamento</h4>
         </div>
     </div>
 </div>
