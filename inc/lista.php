@@ -67,7 +67,7 @@
                     <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_garantia']))); ?></td>
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
                     <td>
-                    <a href="?rota=edit&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-warning" title="editar">
+                    <a href="?rota=editar&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-warning" title="editar">
                         <i class="fas fa-edit mr-2"></i>
                         editar
                     </a>
