@@ -150,13 +150,20 @@ require_once __DIR__."/../inc/navbar.php";
             <script>
                 // Definir o atributo max para o campo data_entrada como a data atual
                 document.getElementById('data_entrada').setAttribute('max', new Date().toISOString().split('T')[0]);
+
+                // Função para ajustar a data mínima de garantia quando a data de entrada mudar
+                document.getElementById('data_entrada').addEventListener('change', function () {
+                    var dataEntrada = this.value; // Pega a data de entrada
+                    document.getElementById('data_garantia').setAttribute('min', dataEntrada); // Define a data mínima de garantia
+                });
             </script>
-            
+
             <!-- Campo de Data de Garantia -->
             <div class="form-group">
                 <label for="garantia">Data final de Garantia</label>
                 <input type="date" class="form-control" id="data_garantia" name="data_garantia">
             </div>
+
             <!-- Campo de Especificações técnicas -->
             <div class="form-group">
                 <label for="espec_tecnicas">Especificações técnicas</label>
