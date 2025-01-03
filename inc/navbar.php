@@ -6,9 +6,11 @@
             <div class="d-inline">
                 <a href="?rota=home"><button type="submit" class="btn btn-info"><i class="fa fa-home"></i> Home</button></a>
             </div>
-            <div class="d-inline">
-                <a href="?rota=usuario"><button type="submit" class="btn btn-info"><i class="fa fa-users"></i> Usúario</button></a>
-            </div>
+            <?php if (isset($_SESSION['usuario']) && $_SESSION['usuario']->nivel == 0): ?>
+                <div class="d-inline">
+                    <a href="?rota=usuario"><button type="submit" class="btn btn-info"><i class="fa fa-users"></i> Usúario</button></a>
+                </div>
+            <?php endif; ?>
             <div class="d-inline">
                 <a href="?rota=produto"><button type="submit" class="btn btn-info"><i class="fa fa-laptop"></i> Equipamento</button></a>
             </div>
@@ -24,5 +26,4 @@
         </div>
     </div>
 </nav>
-
 

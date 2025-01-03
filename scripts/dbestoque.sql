@@ -1,74 +1,58 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Tempo de geração: 20/12/2024 às 15:55
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Banco de dados: `dbestoque`
---
-CREATE DATABASE dbestoque;
-
--- usa o banco de dados
-USE dbestoque;
-
+-- --------------------------------------------------------
+-- Servidor:                     127.0.0.1
+-- Versão do servidor:           8.0.30 - MySQL Community Server - GPL
+-- OS do Servidor:               Win64
+-- HeidiSQL Versão:              12.1.0.6537
 -- --------------------------------------------------------
 
---
--- Estrutura para tabela `usuarios`
---
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE TABLE `usuarios` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `usuario` varchar(50) NOT NULL,
-  `senha` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `nivel` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `usuarios`
---
+-- Copiando estrutura do banco de dados para dbestoque
+CREATE DATABASE IF NOT EXISTS `dbestoque` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `dbestoque`;
 
-INSERT INTO `usuarios` (`id`, `usuario`, `senha`, `email`, `nivel`) VALUES
-(1, 'Administrador', '$2y$10$jcF9G5k82Do0OLN6cjVd9emMZx4cV9gFSpZx4JXZXozhv.rdq9CzS', 'admin@email.com', 0);
+-- Copiando estrutura para tabela dbestoque.produto
+CREATE TABLE IF NOT EXISTS `produto` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(255) NOT NULL,
+  `marca` varchar(255) NOT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `situacao` varchar(100) DEFAULT NULL,
+  `modelo` varchar(255) DEFAULT NULL,
+  `patrimonio` varchar(100) DEFAULT NULL,
+  `data_entrada` date DEFAULT NULL,
+  `data_garantia` date DEFAULT NULL,
+  `espec_tecnicas` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Índices para tabelas despejadas
---
+-- Exportação de dados foi desmarcado.
 
---
--- Índices de tabela `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`usuario`),
-  ADD UNIQUE KEY `email` (`email`);
+-- Copiando estrutura para tabela dbestoque.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `senha` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `nivel` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`usuario`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- AUTO_INCREMENT para tabelas despejadas
---
+-- Exportação de dados foi desmarcado.
 
---
--- AUTO_INCREMENT de tabela `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

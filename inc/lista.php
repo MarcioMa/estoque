@@ -60,13 +60,13 @@ $totalPaginas = ceil($totalRegistros / $registrosPorPagina);
                     <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($produto['data_garantia']))); ?></td>
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
                     <td>
-                        <a href="?rota=editar&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-warning" title="editar">
-                            <i class="fas fa-edit mr-2"></i>editar
+                        <a href="?rota=editar&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-warning fs-6" title="editar">
+                            <i class="fas fa-edit fa-sm mr-2"></i> Editar
                         </a>
                     </td>
                     <td>
                         <a onclick="return confirm('Confirma deleta este registro?')" href="?rota=delete&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-danger" title="deleta">
-                            <i class="fa-solid fa-trash mr-2"></i>Deleta
+                            <i class="fas fa-trash fa-sm mr-2"></i> Deleta
                         </a>
                     </td>
                 </tr>

@@ -1,5 +1,15 @@
 <?php
 require_once __DIR__."/../inc/navbar.php";
+
+
+// Verifica se o usuário está logado e se o nível é 0 (administrador)
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']->nivel != 0) {
+    // Exibe mensagem de acesso negado
+    echo "<script>alert('Acesso negado! Você não tem permissão para acessar esta página.')</script>";
+    header('Refresh:2; index.php?rota=home');
+    exit(); // Impede a execução do código abaixo
+}
+
 ?>
 <!-- Estilos personalizados -->
 <style>
