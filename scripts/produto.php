@@ -53,6 +53,7 @@ require_once __DIR__."/../inc/navbar.php";
         box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.5);
     }
 </style>
+
 <div class="container mt-4 text-center text-uppercase">
     <div class="row">
         <div class="col">
@@ -60,6 +61,7 @@ require_once __DIR__."/../inc/navbar.php";
         </div>
     </div>
 </div>
+
 <div class="form-container shadow-lg p-3 mb-5 bg-light rounded mt-2" >
     <form method="POST" action="?rota=cad_produto" autocomplete="off">        
         <!-- Campo de Status (Ativo/Inativo) -->
@@ -67,11 +69,12 @@ require_once __DIR__."/../inc/navbar.php";
             <input type="checkbox" class="form-check-input" id="status" name="status" value="Ativo" checked>
             <label id="status-label" class="form-check-label" for="status">Ativo</label>
         </div>
-                <!-- Script para alternar o texto da label -->
-    <script>
-        // Função para alterar o texto da label quando o checkbox for clicado
-        document.getElementById('status').addEventListener('change', function() {
-            var statusLabel = document.getElementById('status-label');
+        
+<!-- Script para alternar o texto da label -->
+<script>
+    // Função para alterar o texto da label quando o checkbox for clicado
+    document.getElementById('status').addEventListener('change', function() {
+        var statusLabel = document.getElementById('status-label');
             if (this.checked) {
                 statusLabel.textContent = 'Ativo';
                 document.getElementById('status').value = 'Ativo';
@@ -80,7 +83,7 @@ require_once __DIR__."/../inc/navbar.php";
                 document.getElementById('status').value = 'Inativo';
             }
         });
-    </script>
+</script>
 
 <!-- Campo de Categoria -->
     <div class="form-group">
@@ -119,11 +122,10 @@ require_once __DIR__."/../inc/navbar.php";
     <div class="form-group">
         <label for="status">Situação dispositivo</label>
         <select class="form-select" id="situacao" name="situacao" required>
-            <option value="novo">Novo</option>
-            <option value="usado">Usado</option>
-            <option value="reparo">Em Reparos</option>
-            <option value="outro">Outro</option>
-        <!-- Adicione mais opções conforme necessário -->
+            <option value="Novo">Novo</option>
+            <option value="Usado">Usado</option>
+            <option value="Reparo">Em Reparos</option>
+            <option value="Outro">Outro</option>
         </select>
     </div>
 

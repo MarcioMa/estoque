@@ -37,12 +37,11 @@
                     <option value="Multilaser">Multilaser</option>
                     <option value="Outro">Outro</option> 
                 </optgroup>
-                <optgroup label="Marca">
-                    <option value="Novo">Novo</option>
-                    <option value="Funciona">Funcionando</option>
-                    <option value="Manutenção">Manutenção</option>
-                    <option value="Recolhido">Recolhido</option>
-                    <option value="Descarte">Descarte/Baixa</option>
+                <optgroup label="Situação">
+                <option value="Novo">Novo</option>
+                <option value="Usado">Usado</option>
+                <option value="Reparo">Em Reparos</option>
+                <option value="Outro">Outro</option>
                 </optgroup>
             </select>
             <button type="submit" class="btn btn-secondary mb-1"> <i class="fa fa-filter"></i> OK</button>
@@ -76,7 +75,7 @@
             } elseif (in_array($filtro, ['Apple', 'Acer', 'Asus', 'Dell', 'HP', 'Lenovo', 'Samsung', 'Positivo', 'Compaq', 'Multilaser', 'Outro'])) {
                 $sql .= " AND marca = :filtro";
             } else {
-                $sql .= " AND status = :filtro";
+                $sql .= " AND situacao = :filtro";
             }
 
             // Adiciona o filtro aos parâmetros
@@ -103,6 +102,7 @@
                 <th>Data de Entrada</th>
                 <th>Data de Garantia</th>
                 <th>Especificações Técnicas</th>
+                <th>Registro Editado</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -117,6 +117,7 @@
                     <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_entrada']))); ?></td>
                     <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_garantia']))); ?></td>
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y H:i:s', strtotime($produto['updated_at']))); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

@@ -1,43 +1,36 @@
 <?php
-    include_once __DIR__.'/../inc/config.php'; 
-    include_once __DIR__.'/../inc/database.php';
+include_once __DIR__ . '/../inc/config.php';
+include_once __DIR__ . '/../inc/database.php';
+
+$db = new database();
+$registrosPorPagina = 10;
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = max($page, 1);
+$offset = ($page - 1) * $registrosPorPagina;
+
+$sql = "SELECT * FROM produto LIMIT :limit OFFSET :offset";
+$params = [
+    'limit' => $registrosPorPagina,
+    'offset' => $offset,
+];
+$sql = "SELECT * FROM produto LIMIT $registrosPorPagina OFFSET $offset";
+$resultados = $db->executarConsulta($sql, []);
+
+$sqlTotal = "SELECT COUNT(*) AS total FROM produto";
+$totalRegistros = $db->executarConsulta($sqlTotal, [])[0]['total'];
+$totalPaginas = ceil($totalRegistros / $registrosPorPagina);
 ?>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        .btn-edit {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background: #C0C0C0;
-        }
-    </style>
-    <div class="container mt-2 text-center text-uppercase">
-        <div class="row">
-            <div class="col">
-                <h4>Equipamentos Cadastrados</h4>
-            </div>
+
+<div class="container mt-2 text-center text-uppercase">
+    <div class="row">
+        <div class="col">
+            <h4>Equipamentos Cadastrados</h4>
         </div>
     </div>
+</div>
 
-    <?php
-
-        $db = new database();
-
-        // Exemplo de consulta com parâmetros
-        $sql = "SELECT * FROM produto";
-
-        //Parametros da consulta
-        $params = [];
-
-        // Chama o método para executar a consulta
-        $resultados = $db->executarConsulta($sql, $params);
-        
-        //Exibir tabela de resultados
-        if (!empty($resultados)) : ?>
-
-    <!-- Tabela com os dados dos produtos -->
+<?php if (!empty($resultados)): ?>
     <table class="table table-light table-striped table-bordered mt-2">
         <thead class="table-dark">
             <tr class="text-center">
@@ -54,7 +47,7 @@
                 <th>Excluir</th>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody>
             <?php foreach ($resultados as $produto): ?>
                 <tr>
                     <td><?php echo htmlspecialchars($produto['categoria']); ?></td>
@@ -63,26 +56,35 @@
                     <td><?php echo htmlspecialchars($produto['situacao']); ?></td>
                     <td><?php echo htmlspecialchars($produto['modelo']); ?></td>
                     <td><?php echo htmlspecialchars($produto['patrimonio']); ?></td>
-                    <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_entrada']))); ?></td>
-                    <td><?php echo htmlspecialchars(date('d/m/Y',strtotime($produto['data_garantia']))); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($produto['data_entrada']))); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($produto['data_garantia']))); ?></td>
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
                     <td>
-                    <a href="?rota=editar&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-warning" title="editar">
-                        <i class="fas fa-edit mr-2"></i>
-                        editar
-                    </a>
+                        <a href="?rota=editar&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-warning" title="editar">
+                            <i class="fas fa-edit mr-2"></i>editar
+                        </a>
                     </td>
                     <td>
-                    <a onclick="return confirm('Confirma deleta este registro?')" href="?rota=delete&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-danger" title="deleta">
-                        <i class="fa-solid fa-trash mr-2"></i>
-                        Deleta
-                    </a>
+                        <a onclick="return confirm('Confirma deleta este registro?')" href="?rota=delete&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-danger" title="deleta">
+                            <i class="fa-solid fa-trash mr-2"></i>Deleta
+                        </a>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-    <?php else : ?>
-            <p>Nenhum produto encontrado.</p>
-        <?php endif; ?>
-<script>
+<?php else: ?>
+    <p>Nenhum produto encontrado.</p>
+<?php endif; ?>
+
+<?php if ($totalPaginas > 1): ?>
+    <nav>
+        <ul class="pagination justify-content-center">
+            <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                <li class="page-item <?php echo ($i === $page) ? 'active' : ''; ?>">
+                    <a class="page-link" href="?rota=produto&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                </li>
+            <?php endfor; ?>
+        </ul>
+    </nav>
+<?php endif; ?>

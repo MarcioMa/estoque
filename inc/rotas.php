@@ -1,5 +1,4 @@
 <?php
-
 return[
     '404',
     'home',
@@ -7,6 +6,7 @@ return[
     'login_submit',
     'logout',
 
+    'page',
     'editar',
     'delete',
     'usuario',

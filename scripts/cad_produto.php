@@ -6,11 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Verifica se o checkbox 'status' foi marcado
-if ($_POST['status'] === 'ativo') {
-    $status = "Ativo";
-} else {
-    $status = "Inativo";
-}
+$status = isset($_POST['status']) ? $_POST['status'] : 'inativo';
+
 //Busca dados method POST
 $categoria = $_POST['categoria']?? null;
 $marca = $_POST['marca']?? null;
@@ -22,7 +19,7 @@ $data_garantia = $_POST['data_garantia']?? null;
 $espec_tecnicas = $_POST['espec_tecnicas']?? null;
 
 //verifica foi preenchido dados correto
-if (empty($status) || empty($categoria) || empty($marca) || empty($situacao) || empty($modelo) 
+if (empty($categoria) || empty($marca) || empty($situacao) || empty($modelo) 
 || empty($patrimonio) || empty($data_entrada) || empty($data_garantia) || empty($espec_tecnicas)) {
     header('Location: index.php?rota=produto');
     exit;  
@@ -37,7 +34,6 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [$status, $categoria, $marca, $situacao, $m
 
 if ($response['status'] === 'Success') {
     echo "<script>alert('[ ".$response['affected_rows']." ] Registro cadastrado com sucesso!')</script>";
-    //echo "<h1 style='text-align:center; color:green;'>[".$response['affected_rows']."] Registro cadastrado com sucesso!</h1>";
     header('Refresh:2; index.php?rota=produto');
 } else {
     echo "Erro: " . $response['data'];

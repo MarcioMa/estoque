@@ -20,6 +20,10 @@ if(isset($_SESSION['usuario']) && $rota === 'login'){
 if (!in_array($rota, $rotas_permitidas)) {
     $rota = '404';
 }
+
+// Limpar rota de parâmetros extras, como "page"
+$rotaLimpa = strtok($rota, '&');
+
 //preparação da pagina
 $script = null;
 switch ($rota) {
@@ -58,6 +62,9 @@ switch ($rota) {
         break;
     case 'editar':
         $script = 'editar.php';
+        break;
+    case 'page':
+        $script = 'page.php';
         break;
     case 'exportar_rel':
         require_once __DIR__ . '/../tcpdf/tcpdf.php';
