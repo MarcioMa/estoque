@@ -1,4 +1,5 @@
 <?php
+    require_once __DIR__."/../inc/header.php";
     require_once __DIR__.'/../inc/navbar.php';
     include_once __DIR__.'/../inc/config.php'; 
     include_once __DIR__.'/../inc/database.php';

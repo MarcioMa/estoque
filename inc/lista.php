@@ -61,12 +61,12 @@ $totalPaginas = ceil($totalRegistros / $registrosPorPagina);
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
                     <td>
                         <a href="?rota=editar&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-warning fs-6" title="editar">
-                            <i class="fas fa-edit fa-sm mr-2"></i> Editar
+                            <i class="fas fa-edit fa-sm mx-2 mt-1 mb-2"></i> Editar
                         </a>
                     </td>
                     <td>
                         <a onclick="return confirm('Confirma deleta este registro?')" href="?rota=delete&id=<?php echo htmlspecialchars($produto['id']); ?>" class="btn btn-danger" title="deleta">
-                            <i class="fas fa-trash fa-sm mr-2"></i> Deleta
+                            <i class="fas fa-trash fa-sm mx-2 mt-1 mb-2"></i> Deleta
                         </a>
                     </td>
                 </tr>
