@@ -63,6 +63,9 @@ switch ($rota) {
     case 'editar':
         $script = 'editar.php';
         break;
+    case 'requisicao':
+        $script = 'requisicao.php';
+        break;
     case 'page':
         $script = 'page.php';
         break;

@@ -13,6 +13,7 @@ return[
     'cad_usuario',
     'produto',
     'cad_produto',
+    'requisicao',
     'relatorio',
     'exportar_rel',
     'tcpdf'

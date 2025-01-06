@@ -125,8 +125,8 @@ include_once __DIR__.'/../inc/database.php';
                     <td><?php echo htmlspecialchars($produto['situacao']); ?></td>
                     <td><?php echo htmlspecialchars($produto['modelo']); ?></td>
                     <td><?php echo htmlspecialchars($produto['patrimonio']); ?></td>
-                    <td><?php echo htmlspecialchars($produto['data_entrada']); ?></td>
-                    <td><?php echo htmlspecialchars($produto['data_garantia']); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($produto['data_entrada']))); ?></td>
+                    <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($produto['data_garantia']))); ?></td>
                     <td><?php echo htmlspecialchars($produto['espec_tecnicas']); ?></td>
                 </tr>
             <?php endforeach; ?>
