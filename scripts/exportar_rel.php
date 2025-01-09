@@ -1,5 +1,5 @@
 <?php
-// Carrega o navbar, configurações e a classe de banco de dados
+// configurações e a classe de banco de dados
 include_once __DIR__. '/../inc/config.php'; 
 include_once __DIR__.'/../inc/database.php';
 ?>
@@ -168,15 +168,14 @@ include_once __DIR__.'/../inc/database.php';
                             <option value="Multilaser">Multilaser</option>
                             <option value="Outro">Outro</option> 
                         </optgroup>
-                        <optgroup label="Marca">
-                            <option value="Novo">Novo</option>
-                            <option value="Funciona">Funcionando</option>
-                            <option value="Manutenção">Manutenção</option>
-                            <option value="Recolhido">Recolhido</option>
-                            <option value="Descarte">Descarte/Baixa</option>
+                        <optgroup label="Situacao">
+                        <option value="Novo">Novo</option>
+                        <option value="Usado">Usado</option>
+                        <option value="Reparo">Em Reparos</option>
+                        <option value="Outro">Outro</option>
                         </optgroup>
                     </select>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> OK</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> OK</button>
                 </form>
             </div>
         </div>    

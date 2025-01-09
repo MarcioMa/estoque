@@ -128,9 +128,9 @@
         <?php endif; ?>
 
     <!-- Botão para Imprimir -->
-    <div class="btn-container text-end mx-2">
+    <div class="btn-container text-end mx-2 mb-4">
         <a href="?rota=exportar_rel" class="btn btn-warning" title="Exportar Relatório">
             <i class="fas fa-print mr-2"></i>
-            Imprimir Relatório
+            Pagina de impressão...
         </a>
     </div>

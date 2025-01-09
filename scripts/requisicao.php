@@ -65,6 +65,33 @@
                 <label for="patrimonio">Patrimônio</label>
                 <input type="text" class="form-control" id="patrimonio" placeholder="Informe o número de patrimônio">
             </div>
+            <script>
+
+                document.getElementById('patrimonio').addEventListener('blur', function() {
+                    var patrimonio = document.getElementById('patrimonio').value;
+
+                    if (patrimonio) {
+
+                        var url = 'index.php?rota=consultar_p&patrimonio=' + encodeURIComponent(patrimonio);
+
+                        fetch(url)
+                            .then(response => response.text())
+                            .then(data => {
+                                console.log(data);
+                                if (data.success) {
+                                    document.getElementById('marca').value = data.marca;
+                                    document.getElementById('modelo').value = data.modelo;
+                                } else {
+                                    alert('Patrimônio não encontrado!');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erro ao buscar os dados:', error);
+                                alert('Erro ao buscar os dados do patrimônio.');
+                            });
+                    }
+                });
+            </script>
 
             <div class="form-group" id="campoMarcaModelo" style="display:block;">
                 <label for="marca">Marca</label>
@@ -74,7 +101,6 @@
                 <input type="text" class="form-control" id="modelo" placeholder="Informe o modelo do produto">
             </div>
 
-            <!-- Informações da Requisição -->
             <div class="form-group" id="campoDataSaida" style="display:block;">
                 <label for="dataSaida">Data de Saída</label>
                 <input type="date" class="form-control" id="dataSaida">
